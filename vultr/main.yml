@@ -10,22 +10,11 @@
     # see https://docs.ansible.com/ansible/latest/collections/ngine_io/vultr/index.html#plugins-in-ngine-io-vultr
     - name: get account info
       ngine_io.vultr.vultr_account_info:
-      register: result
-
-    - name: print account info
-      debug:
-        var: result.vultr_account_info
+      register: result_account
 
     - name: gather servers information
       ngine_io.vultr.vultr_server_info:
       register: result
-
-    - name: dump the servers information
-      copy:
-        dest: "./instances/{{ item.name }}-ip-{{ item.v4_main_ip }}"
-        content: "{{ item | to_nice_yaml }}"
-      with_items:
-        - "{{ result.vultr_server_info }}"
 
     - name: dump billing details
       template:
@@ -34,6 +23,7 @@
       when: "{{ result.vultr_server_info != {} }}"
       vars:
         - items: "{{ result.vultr_server_info }}"
+        - vultr_account_info: "{{ result_account.vultr_account_info }}"
 
     - name: dump billing alert
       template:
@@ -42,3 +32,4 @@
       when: "{{ result.vultr_server_info != {} }}"
       vars:
         - items: "{{ result.vultr_server_info }}"
+        - vultr_account_info: "{{ result_account.vultr_account_info }}"
