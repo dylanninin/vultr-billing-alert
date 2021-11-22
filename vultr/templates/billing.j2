@@ -3,9 +3,9 @@ billing of vultr
 - date: {{ template_run_date }}
 - traffic: {{ items| map(attribute='current_bandwidth_gb') | list | sum}}/{{ items| map(attribute='allowed_bandwidth_gb') | list | sum}}gb
 - charge: {{ items| map(attribute='pending_charges') | list | sum}}$
+- period: by month
 - balance: {{ vultr_account_info.balance }}$
 - last_payment: {{ vultr_account_info.last_payment_amount }}$ at {{ vultr_account_info.last_payment_date }}
-- period: by month
 
 details:
 {% for item in items %}

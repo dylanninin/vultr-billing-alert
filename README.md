@@ -34,9 +34,10 @@ Docker Image:
 
 ```shell
 docker run --rm \
-  -e INPUT_VULTR_API_ACCOUNT=your-account \
-  -e INPUT_VULTR_API_KEY=your-key \
-  -e INPUT_SLACK_WEBHOOK=slack-webhook \
+  -v `pwd`/vultr/output:/vultr/output \
+  -e VULTR_API_ACCOUNT=your-account \
+  -e VULTR_API_KEY=your-key \
+  -e SLACK_WEBHOOK=slack-webhook \
   dylanninin/vultr-billing-alert
 
 ```

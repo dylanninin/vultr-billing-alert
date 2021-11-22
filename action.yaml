@@ -16,8 +16,10 @@ outputs:
   vultr_charge:
     description: "Totol pending charges"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: 'composite'
+  steps:
+    - run: ./action.sh
+      shell: bash
   args:
     - ${{ inputs.vultr_api_account }}
     - ${{ inputs.vultr_api_key }}

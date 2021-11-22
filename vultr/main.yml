@@ -19,7 +19,7 @@
     - name: dump billing details
       template:
         src: ./templates/billing.j2
-        dest: ./billing
+        dest: ./output/billing
       when: "{{ result.vultr_server_info != {} }}"
       vars:
         - items: "{{ result.vultr_server_info }}"
@@ -28,7 +28,7 @@
     - name: dump billing alert
       template:
         src: ./templates/billing_alert.j2
-        dest: ./billing_alert
+        dest: ./output/billing_alert
       when: "{{ result.vultr_server_info != {} }}"
       vars:
         - items: "{{ result.vultr_server_info }}"
