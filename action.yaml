@@ -18,7 +18,7 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - run: ./action.sh
+    - run: ${{ github.action_path }}/action.sh
       shell: bash
       env:
         VULTR_API_ACCOUNT: ${{ inputs.vultr_api_account }}
