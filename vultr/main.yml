@@ -1,0 +1,44 @@
+#!/usr/bin/env ansible-playbook
+#
+- name: Vultr
+  hosts: localhost
+  gather_facts: no
+  connection: local
+  tags:
+    - vultr
+  tasks:
+    # see https://docs.ansible.com/ansible/latest/collections/ngine_io/vultr/index.html#plugins-in-ngine-io-vultr
+    - name: get account info
+      ngine_io.vultr.vultr_account_info:
+      register: result
+
+    - name: print account info
+      debug:
+        var: result.vultr_account_info
+
+    - name: gather servers information
+      ngine_io.vultr.vultr_server_info:
+      register: result
+
+    - name: dump the servers information
+      copy:
+        dest: "./instances/{{ item.name }}.{{ vultr_vars.domain_root }}-ip-{{ item.v4_main_ip }}"
+        content: "{{ item | to_nice_yaml }}"
+      with_items:
+        - "{{ result.vultr_server_info }}"
+
+    - name: dump billing details
+      template:
+        src: ./templates/billing.j2
+        dest: ./billing
+      when: "{{ result.vultr_server_info != {} }}"
+      vars:
+        - items: "{{ result.vultr_server_info }}"
+
+    - name: dump billing alert
+      template:
+        src: ./templates/billing_alert.j2
+        dest: ./billing_alert
+      when: "{{ result.vultr_server_info != {} }}"
+      vars:
+        - items: "{{ result.vultr_server_info }}"

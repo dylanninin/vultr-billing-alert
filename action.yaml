@@ -1,0 +1,24 @@
+name: Vultr Billing Alert
+description: Vultr Billing Alert powered by Ansible
+inputs:
+  vultr_api_account:
+    description: 'email of your account'
+    required: true
+  vultr_api_key:
+    description: 'api key of your account'
+    required: true
+  slack_webhook_url:
+    description: 'Slack webhook url'
+    required: true
+outputs:
+  vultr_traffic:
+    description: "Total traffic used/allowed"
+  vultr_charge:
+    description: "Totol pending charges"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.vultr_api_account }}
+    - ${{ inputs.vultr_api_key }}
+    - ${{ inputs.slack_webhook_url }}

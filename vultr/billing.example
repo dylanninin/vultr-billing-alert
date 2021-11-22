@@ -1,0 +1,15 @@
+billing of vultr
+- account: account@gmail.com
+- date: 2021-11-22 18:49:56.886331
+- traffic: 7.9559999999999995/14000gb
+- charge: 0.35$
+- period: by month
+
+details:
+- 155.138.134.154 domain=ca4 provider=vultr traffic=0.761/2000gb charge=0.05/10.0$ created='2021-11-22 07:52:40'
+- 80.240.20.223 domain=de4 provider=vultr traffic=0.799/2000gb charge=0.05/10.0$ created='2021-11-22 07:53:48'
+- 104.238.173.152 domain=gb4 provider=vultr traffic=0.82/2000gb charge=0.05/10.0$ created='2021-11-22 07:54:42'
+- 149.28.22.216 domain=jp4 provider=vultr traffic=1.145/2000gb charge=0.05/10.0$ created='2021-11-22 07:55:40'
+- 158.247.203.199 domain=kr4 provider=vultr traffic=0.628/2000gb charge=0.05/10.0$ created='2021-11-22 07:56:58'
+- 207.148.73.28 domain=sg4 provider=vultr traffic=3.026/2000gb charge=0.05/10.0$ created='2021-11-22 07:51:17'
+- 66.42.101.120 domain=us4 provider=vultr traffic=0.777/2000gb charge=0.05/10.0$ created='2021-11-22 07:58:04'
