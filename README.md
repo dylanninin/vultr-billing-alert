@@ -12,12 +12,17 @@ Usage:
 ```yaml
     steps:
     - name: Billing Alert
-      uses: dylanninin/vultr-billing-alert
-      id: vultr-billing-alert
+      uses: dylanninin/vultr-billing-alert@master
+      id: billing
       with:
         vultr_api_account: ${{ secrets.VULTR_API_ACCOUNT }}
         vultr_api_key: ${{ secrets.VULTR_API_KEY }}
-        slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        slack_webhook: ${{ secrets.SLACK_WEBHOOK }}
+
+    - name: Echo output
+      run: |
+        echo "traffic ${{ steps.billing.outputs.vultr_traffic }}"
+        echo "traffic ${{ steps.billing.outputs.vultr_charge}}"
 
 ```
 

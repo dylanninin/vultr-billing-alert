@@ -7,8 +7,8 @@ inputs:
   vultr_api_key:
     description: 'api key of your account'
     required: true
-  slack_webhook_url:
-    description: 'Slack webhook url'
+  slack_webhook:
+    description: 'Slack webhook'
     required: true
 outputs:
   vultr_traffic:
@@ -17,8 +17,8 @@ outputs:
     description: "Totol pending charges"
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'dylanninin/vultr-billing-alert'
   args:
     - ${{ inputs.vultr_api_account }}
     - ${{ inputs.vultr_api_key }}
-    - ${{ inputs.slack_webhook_url }}
+    - ${{ inputs.slack_webhook }}

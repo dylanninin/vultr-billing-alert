@@ -1,15 +1,11 @@
-FROM python:3.9-alpine
+FROM dylanninin/ansible
 
-RUN apk add --no-cache \
-  bash \
-  ca-certificates \
-  curl \
-  jq
+WORKDIR /vultr
 
 COPY entrypoint.sh /entrypoint.sh
-COPY vultr /vultr
+RUN chmod +x /entrypoint.sh
 
-RUN chmod +x ./entrypoint.sh
+ADD vultr /vultr
 RUN pip install -r /vultr/requirements.txt
 
 ENTRYPOINT ["/entrypoint.sh"]

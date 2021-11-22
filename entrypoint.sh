@@ -11,7 +11,7 @@ export VULTR_API_KEY="${INPUT_VULTR_API_KEY}"
 
 path=./vultr/billing_alert
 
-curl -X POST -H --silent --data "{\"text\": \"$(cat ${path} | sed "s/\"/'/g")\"}" "${INPUT_SLACK_WEBHOOK_URL}"
+curl -X POST -H --silent --data "{\"text\": \"$(cat ${path} | sed "s/\"/'/g")\"}" "${INPUT_SLACK_WEBHOOK}"
 
 traffic=$(cat ./vultr/billing_alert | grep traffic | cut -d ':' -f2 | tr -d ' ')
 charge=$(cat ./vultr/billing_alert | grep charge | cut -d ':' -f2 | tr -d ' ')

@@ -1,0 +1,42 @@
+name: Build Docker Image
+on:
+  push:
+    tags-ignore:
+      - '*'
+    branches:
+      - master
+
+jobs:
+  docker
+    name: build docker image
+    if: ${{ !contains(github.event.head_commit.message, 'skip ci') }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
+
+    - name: Log in to Docker Hub
+      id: login-docker-hub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push Docker image
+      id: build-and-push-image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        push: true
+        tags: dylanninin/vultr-billing-alert:latest
+
+    - name: Notify on Slack
+      uses: act10ns/slack@v1.2.2
+      with:
+        status: ${{ job.status }}
+        channel: '#alert'
+        steps: ${{ toJson(steps) }}
+      if: failure()
