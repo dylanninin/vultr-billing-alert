@@ -22,7 +22,7 @@
 
     - name: dump the servers information
       copy:
-        dest: "./instances/{{ item.name }}.{{ vultr_vars.domain_root }}-ip-{{ item.v4_main_ip }}"
+        dest: "./instances/{{ item.name }}-ip-{{ item.v4_main_ip }}"
         content: "{{ item | to_nice_yaml }}"
       with_items:
         - "{{ result.vultr_server_info }}"

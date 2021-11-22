@@ -25,7 +25,7 @@ Usage:
     - name: Echo output
       run: |
         echo "traffic ${{ steps.billing.outputs.vultr_traffic }}"
-        echo "traffic ${{ steps.billing.outputs.vultr_charge}}"
+        echo "charge ${{ steps.billing.outputs.vultr_charge}}"
 
 ```
 
