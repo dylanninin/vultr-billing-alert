@@ -30,6 +30,18 @@ Usage:
 ```
 
 
+Docker Image:
+
+```shell
+docker run --rm \
+  -e INPUT_VULTR_API_ACCOUNT=your-account \
+  -e INPUT_VULTR_API_KEY=your-key \
+  -e INPUT_SLACK_WEBHOOK=slack-webhook \
+  dylanninin/vultr-billing-alert
+
+```
+
+
 Reference
 
 - [Creating a personal access token - GitHub Docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)

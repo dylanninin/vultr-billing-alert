@@ -4,7 +4,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 cd ${DIR}
 
-export VULTR_API_ACCOUNT="${VULTR_INPUT_API_ACCOUNT}"
+export VULTR_API_ACCOUNT="${INPUT_VULTR_API_ACCOUNT}"
 export VULTR_API_KEY="${INPUT_VULTR_API_KEY}"
 
 /vultr/main.yml

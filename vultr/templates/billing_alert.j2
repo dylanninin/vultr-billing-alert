@@ -1,5 +1,5 @@
 billing of vultr
-- account: {{ vultr_vars.env_vars.VULTR_API_ACCOUNT }}
+- account: {{ lookup('env', 'VULTR_API_ACCOUNT') }}
 - date: {{ template_run_date }}
 - traffic: {{ items| map(attribute='current_bandwidth_gb') | list | sum}}/{{ items| map(attribute='allowed_bandwidth_gb') | list | sum}}gb
 - charge: {{ items| map(attribute='pending_charges') | list | sum}}$

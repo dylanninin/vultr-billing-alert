@@ -1,5 +1,5 @@
 billing of vultr
-- account: {{ vultr_api_account }}
+- account: {{ lookup('env', 'VULTR_API_ACCOUNT') }}
 - date: {{ template_run_date }}
 - traffic: {{ items| map(attribute='current_bandwidth_gb') | list | sum}}/{{ items| map(attribute='allowed_bandwidth_gb') | list | sum}}gb
 - charge: {{ items| map(attribute='pending_charges') | list | sum}}$
@@ -9,5 +9,5 @@ billing of vultr
 
 details:
 {% for item in items %}
-- {{ item.v4_main_ip }} domain={{ item.name }} provider=vultr traffic={{ item.current_bandwidth_gb }}/{{ item.allowed_bandwidth_gb}}gb charge={{ item.pending_charges }}/{{ item.cost_per_month }}$ created='{{ item.date_created }}'
+- {{ item.v4_main_ip }} name={{ item.name }} provider=vultr traffic={{ item.current_bandwidth_gb }}/{{ item.allowed_bandwidth_gb}}gb charge={{ item.pending_charges }}/{{ item.cost_per_month }}$ created='{{ item.date_created }}'
 {% endfor %}
