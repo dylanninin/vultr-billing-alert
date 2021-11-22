@@ -14,13 +14,13 @@ outputs:
   vultr_traffic:
     description: "Total traffic used/allowed"
   vultr_charge:
-    description: "Totol pending charges"
+    description: "Total pending charges"
 runs:
   using: 'composite'
   steps:
     - run: ./action.sh
       shell: bash
-  env:
-    VULTR_API_ACCOUNT: ${{ inputs.vultr_api_account }}
-    VULTR_API_KEY: ${{ inputs.vultr_api_key }}
-    SLACK_WEBHOOK: ${{ inputs.slack_webhook }}
+      env:
+        VULTR_API_ACCOUNT: ${{ inputs.vultr_api_account }}
+        VULTR_API_KEY: ${{ inputs.vultr_api_key }}
+        SLACK_WEBHOOK: ${{ inputs.slack_webhook }}
