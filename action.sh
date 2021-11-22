@@ -6,9 +6,9 @@ cd ${DIR}
 
 docker run --rm \
   -v `pwd`/vultr/output:/vultr/output \
-  -e VULTR_API_ACCOUNT=${VULTR_API_ACCOUNT} \
-  -e VULTR_API_KEY=${VULTR_API_KEY} \
-  -e SLACK_WEBHOOK=${SLACK_WEBHOOK} \
+  -e VULTR_API_ACCOUNT="${VULTR_API_ACCOUNT}" \
+  -e VULTR_API_KEY="${VULTR_API_KEY}" \
+  -e SLACK_WEBHOOK="${SLACK_WEBHOOK}" \
   dylanninin/vultr-billing-alert
 
 traffic=$(cat ./vultr/output/billing_alert | grep traffic | cut -d ':' -f2 | tr -d ' ')
