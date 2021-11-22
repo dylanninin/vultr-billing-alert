@@ -20,7 +20,7 @@
       template:
         src: ./templates/billing.j2
         dest: ./output/billing
-      when: "{{ result.vultr_server_info != {} }}"
+      when: result.vultr_server_info != {}
       vars:
         - items: "{{ result.vultr_server_info }}"
         - vultr_account_info: "{{ result_account.vultr_account_info }}"
@@ -29,7 +29,7 @@
       template:
         src: ./templates/billing_alert.j2
         dest: ./output/billing_alert
-      when: "{{ result.vultr_server_info != {} }}"
+      when: result.vultr_server_info != {}
       vars:
         - items: "{{ result.vultr_server_info }}"
         - vultr_account_info: "{{ result_account.vultr_account_info }}"

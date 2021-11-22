@@ -6,6 +6,6 @@ cd ${DIR}
 
 /vultr/main.yml
 
-path=/vultr/billing_alert
+path=/vultr/output/billing_alert
 
 curl -X POST -H --silent --data "{\"text\": \"$(cat ${path} | sed "s/\"/'/g")\"}" "${SLACK_WEBHOOK}"
