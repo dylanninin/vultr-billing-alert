@@ -1,5 +1,8 @@
 Vultr billing Alert
 
+![Workflow Status](https://github.com/dylanninin/vultr-billing-alert/actions/workflows/billing-alert.yml/badge.svg)
+![Workflow Status](https://github.com/dylanninin/vultr-billing-alert/actions/workflows/docker.yml/badge.svg)
+
 Github Secrets
 
 - `VULTR_API_ACCOUNT`: vultr api account

@@ -1,4 +1,4 @@
-FROM dylanninin/ansible
+FROM dylanninin/vultr-billing-alert
 
 WORKDIR /vultr
 
