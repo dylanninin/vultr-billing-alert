@@ -20,7 +20,7 @@ runs:
   steps:
     - run: ./action.sh
       shell: bash
-  args:
-    - ${{ inputs.vultr_api_account }}
-    - ${{ inputs.vultr_api_key }}
-    - ${{ inputs.slack_webhook }}
+  env:
+    VULTR_API_ACCOUNT: ${{ inputs.vultr_api_account }}
+    VULTR_API_KEY: ${{ inputs.vultr_api_key }}
+    SLACK_WEBHOOK: ${{ inputs.slack_webhook }}
